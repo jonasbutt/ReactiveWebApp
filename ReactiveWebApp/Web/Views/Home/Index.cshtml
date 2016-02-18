@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home";
+}
+
+<section id="start" ng-controller="AppController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            Messages
+        </div>
+        <div class="panel-body">
+            <ul class="list-unstyled">
+                <li ng-repeat="message in messages">
+                    <span>{{message.text}}</span>
+                </li>
+            </ul>
+            <form ng-submit="sendMessage()">
+                <input type="text" ng-model="messageText" class="input-sm" placeholder="add new message here" />
+                <input class="btn btn-primary" type="submit" value="add" />
+            </form>
+        </div>
+    </div>
+</section>
