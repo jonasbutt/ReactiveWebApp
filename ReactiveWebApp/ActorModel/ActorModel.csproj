@@ -7,8 +7,8 @@
     <ProjectGuid>{065308F3-D0B5-4251-8AF4-D0553132C61F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ActorModel</RootNamespace>
-    <AssemblyName>ActorModel</AssemblyName>
+    <RootNamespace>Reactive.ActorModel</RootNamespace>
+    <AssemblyName>Reactive.ActorModel</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
 using Owin;
 
-namespace Web
+namespace Reactive.Web
 {
     public class Startup
     {

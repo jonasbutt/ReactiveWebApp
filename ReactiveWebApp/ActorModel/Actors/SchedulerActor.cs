@@ -1,8 +1,8 @@
 ﻿using System;
-using ActorModel.Messages;
 using Akka.Actor;
+using Reactive.ActorModel.Messages;
 
-namespace ActorModel.Actors
+namespace Reactive.ActorModel.Actors
 {
     public class SchedulerActor : ReceiveActor
     {

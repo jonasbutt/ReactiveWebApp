@@ -1,4 +1,4 @@
-namespace ActorModel.Messages
+namespace Reactive.ActorModel.Messages
 {
     public class RequestStatusUpdate
     {

@@ -1,7 +1,7 @@
 using System;
 using Akka.Actor;
 
-namespace ActorModel
+namespace Reactive.ActorModel
 {
     public class ActorSystemService : IActorSystemService
     {

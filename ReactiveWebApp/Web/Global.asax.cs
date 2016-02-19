@@ -1,9 +1,9 @@
 ﻿using System.Web;
-using ActorModel;
-using ActorModel.Actors;
 using Akka.Actor;
+using Reactive.ActorModel;
+using Reactive.ActorModel.Actors;
 
-namespace Web
+namespace Reactive.Web
 {
     public class MvcApplication : HttpApplication
     {

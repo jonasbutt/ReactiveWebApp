@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace Web.Controllers
+namespace Reactive.Web.Controllers
 {
     public class HomeController : Controller
     {

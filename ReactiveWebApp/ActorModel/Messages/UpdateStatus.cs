@@ -1,7 +1,6 @@
-﻿namespace ActorModel.Messages
+﻿namespace Reactive.ActorModel.Messages
 {
     public class UpdateStatus
     {
-
     }
 }

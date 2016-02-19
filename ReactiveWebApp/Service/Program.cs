@@ -1,19 +1,22 @@
-﻿using ActorModel;
-using ActorModel.Actors;
-using ActorModel.Messages;
-using Akka.Actor;
+﻿using Akka.Actor;
+using Reactive.ActorModel;
+using Reactive.ActorModel.Actors;
+using Reactive.ActorModel.Messages;
 using Topshelf;
 
-namespace Service
+namespace Reactive.Service
 {
     class Program
     {
         static void Main()
         {
-            //var service = new ActorSystemService();
-            //service.StartActorSystem(ConfigureActorSystem);
-            //service.GetActorSystem().WhenTerminated.Wait();
+            #if DEBUG
+            var service = new ActorSystemService();
+            service.StartActorSystem(ConfigureActorSystem);
+            service.GetActorSystem().WhenTerminated.Wait();
+            #endif
 
+            #if !DEBUG
             HostFactory.Run(hostConfigurator =>
             {
                 hostConfigurator.Service<IActorSystemService>(serviceConfigurator =>
@@ -30,6 +33,7 @@ namespace Service
                 hostConfigurator.SetDisplayName("Reactive Service");
                 hostConfigurator.SetServiceName("ReactiveService");
             });
+            #endif
         }
 
         private static void ConfigureActorSystem(ActorSystem actorSystem)

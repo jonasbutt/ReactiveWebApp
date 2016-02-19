@@ -1,4 +1,4 @@
-﻿namespace ActorModel
+﻿namespace Reactive.ActorModel
 {
     public interface IWebClientMessenger
     {

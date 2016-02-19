@@ -1,10 +1,9 @@
-﻿using System;
-using System.Linq;
-using ActorModel;
+﻿using System.Linq;
 using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
+using Reactive.ActorModel;
 
-namespace Web
+namespace Reactive.Web
 {
     public class WebClientMessenger : IWebClientMessenger
     {
