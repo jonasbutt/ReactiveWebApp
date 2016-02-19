@@ -1,14 +1,14 @@
 (function () {
     var app = angular.module('App', []);
 
-    var messageHub = $.connection.messageHub;
+    var messagingHub = $.connection.messagingHub;
 
     app.controller('AppController', ['$scope', function ($scope) {
 
         $scope.messages = [];
 
-        messageHub.client.sendMessage = function (message) {
-            $scope.messages.push({ text: message });
+        messagingHub.client.sendMessage = function (message) {
+            $scope.messages.push({ text: message.Text });
             $scope.$apply();
         }
 
@@ -16,7 +16,7 @@
             var message = $scope.messageText;
             $scope.messages.push({ text: message });
             $scope.messageText = "";
-            messageHub.server.sendMessage(message);
+            messagingHub.server.sendMessage({ Text : message });
         };
 
     }]);

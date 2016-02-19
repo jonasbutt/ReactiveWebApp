@@ -7,9 +7,10 @@ namespace ActorModel
     {
         private ActorSystem actorSystem;
 
-        public void StartActorSystem()
+        public void StartActorSystem(Action<ActorSystem> configure)
         {
             actorSystem = ActorSystem.Create("reactive");
+            configure(actorSystem);
         }
 
         public ActorSystem GetActorSystem()

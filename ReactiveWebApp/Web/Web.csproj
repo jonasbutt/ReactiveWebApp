@@ -176,8 +176,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebClientMessenger.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="MessageHub.cs" />
+    <Compile Include="WebClientMessagingHub.cs" />
     <Compile Include="WebAppConfigurator.cs" />
   </ItemGroup>
   <ItemGroup>

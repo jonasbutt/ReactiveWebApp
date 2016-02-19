@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Web;
 using ActorModel;
+using ActorModel.Messages;
 using Akka.Actor;
 using Microsoft.AspNet.SignalR;
+using Microsoft.AspNet.SignalR.Hubs;
 
 namespace Web
 {
-    public class MessageHub : Hub
+    [HubName("messagingHub")]
+    public class WebClientMessagingHub : Hub
     {
-        public void SendMessage(string message)
+        public void SendMessage(SendMessage message)
         {
-            var actorSystem = GetActorSystem();
             Clients.Others.sendMessage(message);
         }
 

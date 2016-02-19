@@ -65,17 +65,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActorSystemService.cs" />
+    <Compile Include="Actors\ScheduledTaskActor.cs" />
+    <Compile Include="Actors\SchedulerActor.cs" />
+    <Compile Include="Actors\WebClientMessengerActor.cs" />
+    <Compile Include="Messages\RunTask.cs" />
+    <Compile Include="Messages\SendMessage.cs" />
+    <Compile Include="Messages\StartScheduler.cs" />
+    <Compile Include="Messages\UpdateStatus.cs" />
+    <Compile Include="Messages\RequestStatusUpdate.cs" />
     <Compile Include="IActorSystemService.cs" />
+    <Compile Include="IWebClientMessenger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actors\" />
-    <Folder Include="Messages\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

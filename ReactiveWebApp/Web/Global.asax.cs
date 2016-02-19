@@ -1,5 +1,7 @@
 ﻿using System.Web;
 using ActorModel;
+using ActorModel.Actors;
+using Akka.Actor;
 
 namespace Web
 {
@@ -10,8 +12,13 @@ namespace Web
             WebAppConfigurator.Configure();
 
             var actorSystemService = new ActorSystemService();
-            actorSystemService.StartActorSystem();
+            actorSystemService.StartActorSystem(ConfigureActorSystem);
             Application["ActorSystemService"] = actorSystemService;
+        }
+
+        private static void ConfigureActorSystem(ActorSystem actorSystem)
+        {
+            actorSystem.ActorOf(Props.Create<WebClientMessengerActor>(new WebClientMessenger()), "webClientMessenger");
         }
 
         protected void Application_End()
@@ -22,6 +29,7 @@ namespace Web
                 var actorSystemService = actorSystemServiceObject as IActorSystemService;
                 actorSystemService.StopActorSystem();
             }
+            Application["ActorSystemService"] = null;
         }
     }
 }
