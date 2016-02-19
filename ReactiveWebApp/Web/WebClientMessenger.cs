@@ -25,9 +25,6 @@ namespace Reactive.Web
             var methodName = messageType.Name;
             var methodNameLowercased = methodName.First().ToString().ToLowerInvariant() + methodName.Substring(1);
             messageHub.Invoke(methodNameLowercased, message);
-            //var type = messageHub.GetType();
-            //var method = type.GetMethod(methodNameLowercased);
-            //method.Invoke(messageHub, new object[] { message });
         }
     }
 }
