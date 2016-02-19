@@ -1,4 +1,5 @@
-﻿using Owin;
+﻿using Microsoft.AspNet.SignalR;
+using Owin;
 
 namespace Web
 {
@@ -6,7 +7,7 @@ namespace Web
     {
         public void Configuration(IAppBuilder app)
         {
-            app.MapSignalR();
+            app.MapSignalR("/s", new HubConfiguration());
         }
     }
 }
