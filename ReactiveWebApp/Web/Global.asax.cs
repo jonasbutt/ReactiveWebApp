@@ -1,48 +1,27 @@
-﻿using System.Web.Http;
-using System.Web.Mvc;
-using System.Web.Optimization;
-using System.Web.Routing;
+﻿using System.Web;
+using ActorModel;
 
 namespace Web
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
-            GlobalFilters.Filters.Add(new HandleErrorAttribute());
+            WebAppConfigurator.Configure();
 
-            RegisterBundles(BundleTable.Bundles);
-
-            RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            RouteTable.Routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
-
-            GlobalConfiguration.Configuration.MapHttpAttributeRoutes();
-
-            GlobalConfiguration.Configuration.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new {id = RouteParameter.Optional});
-
-            GlobalConfiguration.Configuration.EnsureInitialized();
+            var actorSystemService = new ActorSystemService();
+            actorSystemService.StartActorSystem();
+            Application["ActorSystemService"] = actorSystemService;
         }
 
-        private static void RegisterBundles(BundleCollection bundles)
+        protected void Application_End()
         {
-            bundles.Add(new ScriptBundle("~/bundles/script").Include(
-                        "~/Scripts/jquery-{version}.js",
-                         "~/Scripts/jquery.validate*",
-                         "~/Scripts/jquery.signalR-{version}.js",
-                         "~/Scripts/angular.js",
-                         "~/Scripts/bootstrap.js"));
-
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Client/app.css"));
+            var actorSystemServiceObject = Application["ActorSystemService"];
+            if (actorSystemServiceObject is IActorSystemService)
+            {
+                var actorSystemService = actorSystemServiceObject as IActorSystemService;
+                actorSystemService.StopActorSystem();
+            }
         }
     }
 }
