@@ -1,3 +1,4 @@
+using System;
 using Akka.Actor;
 using Reactive.ActorModel.Messages;
 
@@ -10,7 +11,7 @@ namespace Reactive.ActorModel.Actors
             Receive<RunTask>(message =>
             {
                 var webClientMessenger = Context.ActorSelection("akka.tcp://reactive@localhost:33888/user/webClientMessenger");
-                webClientMessenger.Tell(new SendMessage("Hello"));
+                webClientMessenger.Tell(new SendMessage("Hello World " + DateTime.Now.ToLongTimeString()));
             });
         }
     }

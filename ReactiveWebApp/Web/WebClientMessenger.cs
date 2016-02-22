@@ -16,10 +16,15 @@ namespace Reactive.Web
 
         public void SendMessageToAllWebClients<TMessage>(TMessage message)
         {
-            SendMessage<TMessage>(message, messagingHubContext.Clients.All);
+            SendMessage(message, messagingHubContext.Clients.All);
         }
 
-        private void SendMessage<TMessage>(TMessage message, IClientProxy messageHub)
+        public void SendMessageToOtherWebClients<TMessage>(TMessage message, string currentWebClientId)
+        {
+             SendMessage(message, messagingHubContext.Clients.AllExcept(currentWebClientId));
+        }
+
+        private static void SendMessage<TMessage>(TMessage message, IClientProxy messageHub)
         {
             var messageType = typeof(TMessage);
             var methodName = messageType.Name;
