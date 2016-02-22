@@ -14,8 +14,11 @@
                 </li>
             </ul>
             <form ng-submit="sendMessage()">
-                <input type="text" ng-model="messageText" class="input-sm" placeholder="add new message here" />
-                <input class="btn btn-primary" type="submit" value="add" />
+                <input type="text" ng-model="messageText" class="input-sm" placeholder="add new message here"/>
+                <input class="btn btn-primary" type="submit" value="send message"/>
+            </form>
+            <form ng-submit="requestStatusUpdate()">
+                <input class="btn btn-primary" type="submit" value="request status update" />
             </form>
         </div>
     </div>

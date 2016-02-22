@@ -171,14 +171,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActorMessenger.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IActorMessenger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebClientMessenger.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="WebClientMessagingHub.cs" />
+    <Compile Include="MessagingHub.cs" />
     <Compile Include="WebAppConfigurator.cs" />
   </ItemGroup>
   <ItemGroup>

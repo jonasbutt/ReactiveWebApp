@@ -6,16 +6,16 @@ namespace Reactive.ActorModel.Actors
 {
     public class SchedulerActor : ReceiveActor
     {
+        IActorRef scheduledTask;
+
         public SchedulerActor()
         {
-            IActorRef scheduledTask;
-
             Receive<StartScheduler>(message =>
             {
                 scheduledTask = Context.ActorOf(Props.Create(typeof(ScheduledTaskActor)), "scheduledTask");
                 Context.System.Scheduler.ScheduleTellRepeatedly(
-                    TimeSpan.FromSeconds(10),
-                    TimeSpan.FromSeconds(5),
+                    TimeSpan.FromSeconds(15),
+                    TimeSpan.FromSeconds(15),
                     scheduledTask,
                     new RunTask(),
                     Self);
@@ -23,10 +23,7 @@ namespace Reactive.ActorModel.Actors
 
             Receive<RequestStatusUpdate>(message =>
             {
-            });
-
-            Receive<UpdateStatus>(message =>
-            {
+                scheduledTask.Tell(new UpdateStatus());
             });
         }
     }

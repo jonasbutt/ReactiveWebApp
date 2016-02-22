@@ -19,6 +19,10 @@
             messagingHub.server.sendMessage(message);
         };
 
+        $scope.requestStatusUpdate = function () {
+            messagingHub.server.requestStatusUpdate();
+        };
+
     }]);
 
     $.connection.hub.disconnected(function () {

@@ -11,7 +11,7 @@ namespace Reactive.Web
 
         public WebClientMessenger()
         {
-            messagingHubContext = GlobalHost.ConnectionManager.GetHubContext<WebClientMessagingHub>();
+            messagingHubContext = GlobalHost.ConnectionManager.GetHubContext<MessagingHub>();
         }
 
         public void SendMessageToAllWebClients<TMessage>(TMessage message)

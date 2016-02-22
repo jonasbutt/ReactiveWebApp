@@ -6,18 +6,25 @@ using Reactive.ActorModel.Messages;
 namespace Reactive.Web
 {
     [HubName("messagingHub")]
-    public class WebClientMessagingHub : Hub
+    public class MessagingHub : Hub
     {
         private readonly IWebClientMessenger webClientMessenger;
+        private readonly IActorMessenger actorMessenger;
 
-        public WebClientMessagingHub()
+        public MessagingHub()
         {
             this.webClientMessenger = new WebClientMessenger();
+            this.actorMessenger = new ActorMessenger();
         }
 
         public void SendMessage(SendMessage message)
         {
             this.webClientMessenger.SendMessageToOtherWebClients(message, this.Context.ConnectionId);
+        }
+
+        public void RequestStatusUpdate()
+        {
+            this.actorMessenger.RequestStatusUpdate();
         }
     }
 }
