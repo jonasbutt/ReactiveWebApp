@@ -8,15 +8,15 @@
         $scope.messages = [];
 
         messagingHub.client.sendMessage = function (message) {
-            $scope.messages.push({ text: message.Text });
+            $scope.messages.push(message);
             $scope.$apply();
         }
 
         $scope.sendMessage = function () {
-            var message = $scope.messageText;
-            $scope.messages.push({ text: message });
+            var message = { Text: $scope.messageText };
             $scope.messageText = "";
-            messagingHub.server.sendMessage({ Text : message });
+            $scope.messages.push(message);
+            messagingHub.server.sendMessage(message);
         };
 
     }]);

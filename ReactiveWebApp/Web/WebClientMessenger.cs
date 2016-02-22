@@ -7,16 +7,16 @@ namespace Reactive.Web
 {
     public class WebClientMessenger : IWebClientMessenger
     {
-        private readonly IHubContext messageHubContext;
+        private readonly IHubContext messagingHubContext;
 
         public WebClientMessenger()
         {
-            messageHubContext = GlobalHost.ConnectionManager.GetHubContext<WebClientMessagingHub>();
+            messagingHubContext = GlobalHost.ConnectionManager.GetHubContext<WebClientMessagingHub>();
         }
 
         public void SendMessageToAllWebClients<TMessage>(TMessage message)
         {
-            SendMessage<TMessage>(message, messageHubContext.Clients.All);
+            SendMessage<TMessage>(message, messagingHubContext.Clients.All);
         }
 
         private void SendMessage<TMessage>(TMessage message, IClientProxy messageHub)
@@ -25,9 +25,6 @@ namespace Reactive.Web
             var methodName = messageType.Name;
             var methodNameLowercased = methodName.First().ToString().ToLowerInvariant() + methodName.Substring(1);
             messageHub.Invoke(methodNameLowercased, message);
-            //var type = messageHub.GetType();
-            //var method = type.GetMethod(methodNameLowercased);
-            //method.Invoke(messageHub, new object[] { message });
         }
     }
 }
